@@ -116,8 +116,9 @@ class DataReader:
         # generate each row: dictionary comprehension
         
         for n_row, row in enumerate(open(self._fp, "r")):
+            ## not needed since we skip header row in main.py:
             # if n_row == 0:
-            #     continue
+            #     continue 
             row_vals = row.strip('\n').split(self._sep)
             
             # define the row_vals dictionary 
