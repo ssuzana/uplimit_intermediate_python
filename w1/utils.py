@@ -121,12 +121,10 @@ class DataReader:
             row_vals = row.strip('\n').split(self._sep)
             
             # define the row_vals dictionary 
-            row_vals = {key : val for key, val in zip(self._col_names,row_vals)} #### [YOUR CODE HERE] ####
+            row_vals = {key : val for key, val in zip(self._col_names,row_vals)} 
             row_vals['n_row'] = n_row
-                #### [YOUR CODE HERE] ####
 
             # return results: 
-            #### [YOUR CODE HERE] ####
             yield row_vals
     
     ######################################## YOUR CODE HERE ##################################################
