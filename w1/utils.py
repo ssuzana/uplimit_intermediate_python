@@ -116,14 +116,18 @@ class DataReader:
         # generate each row: dictionary comprehension
         
         for n_row, row in enumerate(open(self._fp, "r")):
+            # if n_row == 0:
+            #     continue
             row_vals = row.strip('\n').split(self._sep)
             
             # define the row_vals dictionary 
-            row_vals = #### [YOUR CODE HERE] ####
-            row_vals['n_row'] = #### [YOUR CODE HERE] ####
+            row_vals = {key : val for key, val in zip(self._col_names,row_vals)} #### [YOUR CODE HERE] ####
+            row_vals['n_row'] = n_row
+                #### [YOUR CODE HERE] ####
 
             # return results: 
             #### [YOUR CODE HERE] ####
+            yield row_vals
     
     ######################################## YOUR CODE HERE ##################################################
 
@@ -132,4 +136,15 @@ class DataReader:
 
     def get_column_names(self):
         return self._col_names
+
+if __name__ == "__main__":
+    fp = '/workspaces/uplimit_intermediate_python/data/tst/2015.csv'
+    sep = ','
+    col_names = 'StockCode,Description,UnitPrice,Quantity,TotalPrice,Country,InvoiceNo,Date'.split(",")
+    data_reader = DataReader(fp, sep, col_names)
+    
+    data_reader_gen = (row for row in data_reader)
+    
+    print(next(data_reader_gen))
+    print(next(data_reader_gen))
 
