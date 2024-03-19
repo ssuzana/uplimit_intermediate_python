@@ -41,7 +41,9 @@
             var url = new URL(urlString);
 
             // Make a websocket connection
-            var ws = new WebSocket(`ws://localhost:8000/ws`);
+            var ws = new WebSocket(`wss://laughing-disco-g6gvg9rqp792vv55-8000.app.github.dev/ws`);
+            // if running on localhost, change to:
+            //var ws = new WebSocket(`ws://localhost:8000/ws`);
 
             // On receiving a message, append it to the unordered list `messages`
             function processMessage(event) {
