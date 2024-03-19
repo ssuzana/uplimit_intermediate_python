@@ -45,6 +45,20 @@ class DB:
         Read more about datatypes in Sqlite here -> https://www.sqlite.org/datatype3.html
         """
     ######################################## YOUR CODE HERE ##################################################
+        sql_statement = f"""
+        CREATE TABLE IF NOT EXISTS {self._table_name}
+        (
+            process_id TEXT not null,
+            file_name TEXT default null,
+            file_path TEXT default null,
+            description TEXT default null,
+            start_time TEXT not null,
+            end_time TEXT default null,
+            percentage REAL default null
+        )
+        """
+        self._connection.execute(sql_statement)
+        self._connection.commit()
 
     ######################################## YOUR CODE HERE ##################################################
 
@@ -63,6 +77,20 @@ class DB:
         :return: None
         """
     ######################################## YOUR CODE HERE ##################################################
+        sql_statement = f'''
+        INSERT INTO {self._table_name} 
+        VALUES (
+            '{process_id}',
+            '{file_name}',
+            '{file_path}',
+            '{description}',
+            '{start_time}',
+            '{end_time}',
+            '{percentage}'
+        );''')
+   
+        self._connection.execute(sql_statement)
+        self._connection.commit()
 
     ######################################## YOUR CODE HERE ##################################################
 
@@ -95,7 +123,13 @@ class DB:
         :return: None
         """
     ######################################## YOUR CODE HERE ##################################################
+        sql_statement = f'''
+        UPDATE {self._table_name} 
+        SET percentage='{percentage}'
+        WHERE process_id='{process_id}';'''
 
+        self._connection.execute(sql_statement)
+        self._connection.commit()
     ######################################## YOUR CODE HERE ##################################################
 
 
