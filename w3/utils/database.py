@@ -87,7 +87,7 @@ class DB:
             '{start_time}',
             '{end_time}',
             '{percentage}'
-        );''')
+        );'''
    
         self._connection.execute(sql_statement)
         self._connection.commit()
